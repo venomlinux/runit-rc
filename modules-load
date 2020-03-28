@@ -1,0 +1,24 @@
+#!/bin/sh
+
+[ "$(id -u)" = "0" ] || {
+	echo "$(basename $0) need to run as root!"
+	exit 1
+}
+
+MODULES_DIR=/etc/modules-load.d
+MODULES_FILE=/etc/modules-load
+
+error=0
+
+for file in $MODULES_FILE $MODULES_DIR/*.conf; do
+	[ -f "$file" ] || continue
+	while read -r module junk; do
+		# Ignore comments and blank lines
+		case "$module" in
+			""|\#*) continue ;;
+		esac
+		modprobe -ab "$module" || error=1
+	done < $file
+done
+
+exit $error

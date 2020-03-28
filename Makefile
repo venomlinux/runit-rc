@@ -11,8 +11,8 @@ IVARDIR	= $(DESTDIR)$(VARDIR)
 
 CC	= gcc
 SCRIPTS	= 1 2 3 ctrlaltdel rc.startup.local rc.shutdown.local rc.startup rc.shutdown
-BINARY	= halt pause shutdown
-CONF	= modules runit.conf
+BINARY	= halt pause shutdown modules-load
+CONF	= runit.conf
 MAN1	= pause.1
 MAN8	= shutdown.8
 

@@ -6,11 +6,10 @@
 }
 
 MODULES_DIR=/etc/modules-load.d
-MODULES_FILE=/etc/modules-load
 
 error=0
 
-for file in $MODULES_FILE $MODULES_DIR/*.conf; do
+for file in $MODULES_DIR/*.conf; do
 	[ -f "$file" ] || continue
 	while read -r module junk; do
 		# Ignore comments and blank lines

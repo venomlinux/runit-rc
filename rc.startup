@@ -12,7 +12,7 @@ CRESET="\e[0m"
 [ -r /etc/lsb-release ] && . /etc/lsb-release
 
 welcome() {
-	printf "Welcome to ${COLOUR}$1${CRESET}!\n"
+	msg "Welcome to ${COLOUR}$1${CRESET}!"
 }
 
 msg() {

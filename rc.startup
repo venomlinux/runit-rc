@@ -30,13 +30,6 @@ mkdir -p -m0755 /run/lock /dev/pts /dev/shm
 mountpoint -q /dev/pts || mount /dev/pts &>/dev/null || mount -t devpts devpts /dev/pts -o mode=0620,gid=5,nosuid,noexec
 mountpoint -q /dev/shm || mount /dev/shm &>/dev/null || mount -t tmpfs shm /dev/shm -o mode=1777,nosuid,nodev
 
-msg "Updating module dependency list..."
-if [ -e "/lib/modules/$(uname -r)/modules.dep" ]; then
-	depmod --quick
-else
-	depmod --all
-fi
-
 msg "Loading kernel modules..."
 modules-load
 
